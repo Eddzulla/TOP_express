@@ -1,29 +1,28 @@
 const express = require('express');
-const path = require('path');
-// This is our server
-const app = express();
 
-// This is our route
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-})
+const app = express(); // This is our server
+const authorRouter = require('./routes/authorRouter.js');
+const bookRouter = require('./routes/bookRouter.js')
+const indexRouter = require('./routes/indexRouter.js')
 
+app.use(express.urlencoded({ extended: true }));
 
-
-
-app.post("/", (req, res) => {
-    res.send("POST request to homepage", "/");
-})
+// This is our routing
+app.use("/", indexRouter)
+app.use("/authors/", authorRouter);
+app.use("/books/", bookRouter);
 
 const PORT = 8000;
 // We tell the server which port to listen for GET-requests
-app.listen(PORT, (ERROR) => {
-    if (ERROR) {
-        throw ERROR;
+app.listen(PORT, (error) => {
+    if (error) {
+        throw error;
     }
     console.log(`This is my app, listening on port ${PORT}`);
     console.log(`http://localhost:${PORT}`);
 });
+
+
 
 
 

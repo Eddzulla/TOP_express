@@ -10,17 +10,18 @@
 <body>
     <h1>Welcome to Eddi's page</h1>
 
-    <form action="post">
+    <form action="/messages/schlajna" method="get">
         <label for="prompt"></label>
-        <input type="text" label="prompt">
+        <input type="text" name="prompt" id="prompt">
         <button type="submit" id="test">Submit prompt</button>
-
     </form>
 
-
-    <script>
-
-    </script>
+    <button>
+        <a href="/books">Books</a>
+    </button>
+    <button>
+        <a href="/authors">Authors</a>
+    </button>
 </body>
 
 </html>
