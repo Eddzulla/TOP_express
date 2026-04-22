@@ -6,11 +6,12 @@ const bookRouter = require('./routes/bookRouter.js')
 const indexRouter = require('./routes/indexRouter.js')
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // This is our routing
-app.use("/", indexRouter)
 app.use("/authors/", authorRouter);
 app.use("/books/", bookRouter);
+app.use("/", indexRouter)
 
 const PORT = 8000;
 // We tell the server which port to listen for GET-requests

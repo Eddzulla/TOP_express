@@ -3,6 +3,7 @@ const path = require("path");
 const authorRouter = Router();
 
 authorRouter.get("/", (req, res) => res.send("All authors"));
+
 authorRouter.get("/:authorId", (req, res) => {
     const { authorId } = req.params;
     const newObject = { "author_id": authorId }
