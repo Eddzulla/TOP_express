@@ -4,9 +4,11 @@ const bookRouter = Router();
 
 bookRouter.get("/", (req, res) => res.send("All books will be shown here"));
 
-bookRouter.get("/:bookId", (req, res) => {
+bookRouter.get("/:bookId", (req, res, next) => {
     const { bookId } = req.params;
-    res.send(`book id: ${bookId}`);
+    res.json(`book id: ${bookId}`);
+
+    next();
 
 })
 
