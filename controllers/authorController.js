@@ -10,7 +10,7 @@ async function getAuthorById(req, res){
     if(!author){
         throw new CustomNotFoundError("Author not found");
     }
-    res.send(`Author name: ${author.name}`);
+    res.send(`Author object: {id: ${author.id}, name: ${author.name}}`);
 };
 
 module.exports = {getAuthorById};

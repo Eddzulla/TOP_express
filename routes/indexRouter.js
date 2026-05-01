@@ -3,7 +3,25 @@ const { Router } = require('express');
 const path = require('path');
 const indexRouter = Router();
 
-indexRouter.get("/", (req, res) => res.sendFile(path.join(__dirname, "../index.html")));
+const links = [
+    {href: "/", text: "Home"},
+    {href: "about", text: "About"}
+];
+
+const users = [
+    "Rose", "Cake", "Beef"
+];
+
+indexRouter.get("/", (req, res) => {
+    res.locals.links = links;
+    res.locals.users = users;
+    res.render("index",{message: "EJS Rocks!"});
+})
+
+indexRouter.get("/about", (req, res) => {
+    res.locals.links = links;
+    res.render("about");
+})
 
 indexRouter.post("/messages/{message}/", (req, res) => {
     const fieldValue = req.body.prompt;

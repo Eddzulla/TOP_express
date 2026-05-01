@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddi's page</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <h1>Welcome to Eddi's page</h1>
+
+    <%- include('../components/navbar', {links: links}) %>
+
+    <ul>
+        <% users.forEach((user) => { %>
+            <%- include('user', {user: user}); %>
+            <%}); %>
+    </ul>
+
+    <form action="/messages/" method="post">
+        <label for="prompt"></label>
+        <input type="text" name="prompt">
+        <button type="submit" id="test">Submit prompt</button>
+    </form>
+
+    <button>
+        <a href="/books">Books</a>
+    </button>
+    <button>
+        <a href="/authors">Authors</a>
+    </button>
+
+     <%- include('../components/footer', {links: links}) %>
+</body>
+
+</html>
